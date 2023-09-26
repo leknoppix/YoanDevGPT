@@ -40,9 +40,10 @@ jobs:
         uses: actions/create-release@v1
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }} # Ce token est fourni par Actions, vous n'avez pas besoin de créer votre propre token
+          tag: ${{ github.ref_name }} # Utiliser github.ref_name à la place de github.ref
         with:
-          tag_name: ${{ github.ref }}
-          release_name: Release ${{ github.ref }}
+          tag_name: ${{ env.tag }}
+          release_name: Release ${{ env.tag }}
           draft: false
           prerelease: false
 
